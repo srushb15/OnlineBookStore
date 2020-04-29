@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.bookstore.models.User;
 
@@ -304,5 +306,46 @@ public class UserDB {
 		}
 			
 		return users;
+	}
+	
+	public int updateUserLastLogin(String user) {
+		Statement stmt = null;
+		ResultSet rs = null;
+		int resultNo = 0;
+		Connection conn = null;
+		
+		try {
+			conn = connPool.getConnection();
+			
+			if(conn != null) {
+				stmt = conn.createStatement();
+				String strQuery = "update users set"
+				+ " last_login='" + new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.S").format(new Date())
+				+ "' where username='" + user + "'";
+				resultNo = stmt.executeUpdate(strQuery);
+			}
+		} catch (SQLException e) {
+			for(Throwable t: e) {
+				t.printStackTrace();
+			}
+		} catch (Exception et) {
+			et.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (stmt != null) {
+					stmt.close();
+				}
+				if (conn != null) {
+					connPool.returnConnection(conn);
+				}
+			} catch (Exception e) {
+				System.err.println(e);
+			}
+		}
+			
+		return resultNo;
 	}
 }

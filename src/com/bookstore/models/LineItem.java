@@ -101,4 +101,11 @@ public class LineItem implements Serializable {
 		book.setInventory(book.getInventory() - quantity);
 		bookDb.updateBook(book);
 	}
+	
+	public void commitInventoryIncrement(int quantity) {
+		BookDB bookDb = new BookDB();
+		Book book = bookDb.selectBook(isbn);
+		book.setInventory(book.getInventory() + quantity);
+		bookDb.updateBook(book);
+	}
 }

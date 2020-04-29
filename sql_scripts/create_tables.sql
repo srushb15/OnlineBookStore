@@ -1,3 +1,7 @@
+show databases;
+
+create database OBS_MASTER;
+
 use OBS_MASTER;
 
 create table users
@@ -45,7 +49,7 @@ create table book_author
         references author(author_id)
         on delete cascade
         on update cascade,
-    primary key (isbn, author_id)	
+    primary key (isbn)	
 );
 
 create table transactions 
@@ -106,7 +110,7 @@ create table genre_book
         references genres(genre_name)
         on delete cascade
         on update cascade,
-	primary key (isbn, genre_name)
+	primary key (isbn)
 );
 
 create table line_item
@@ -123,3 +127,5 @@ create table line_item
     foreign key (transaction_id)
         references transactions(transaction_id)
 );
+
+insert into users (username, f_name, l_name, email, phone, passwd, signup_date, last_login, is_staff) values('admin','admin','admin','admin@mail.com','9090909090','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4',now(),now(),'0');

@@ -54,6 +54,8 @@ public class UserLogin extends HttpServlet {
 		String hashed = Hasher.getHash(passwordIn);
 		if (hashed.equals(user.getPasswd())) {
 			request.getSession().setAttribute("user", usernameIn);
+			int lastLogin = new UserDB().updateUserLastLogin(usernameIn);
+			System.out.println("lastLogin value - " + lastLogin);
 		} else {
 			System.out.println("Password incorrect");
 			response.sendRedirect(request.getContextPath() + "/loginError.jsp?errFlag=inv");
