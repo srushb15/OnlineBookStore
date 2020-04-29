@@ -13,10 +13,8 @@
 </style>
 
 <div class="footer">
-<br>
- <p class="n-0 text-center text-white"> Copyright &copy; www.oldtownbooks.com 2020</p>
-<p class="n-0 text-center text-white">This site is developed and hosted by Srushti Birajdar</p>
-<br>
+ <p class="n-0 text-center text-white" style="margin-top: 10px;"> Copyright &copy; www.oldtownbooks.com 2020</p>
+<p class="n-0 text-center text-white" style="color:aqua;">This site is developed and hosted by Srushti Birajdar</p>
 </div>
 
 

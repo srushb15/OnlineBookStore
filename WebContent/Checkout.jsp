@@ -180,7 +180,7 @@ function validateForm() {
          <label for="expmonth">Exp Month</label>
          <!-- <input type="text" id="expmonth" name="expmonth" placeholder="September" required="required"> -->
          <select type="text" placeholder="September" required>
-             <option selected value='1'>Janaury</option>
+             <option selected value='1'>January</option>
     <option value='2'>February</option>
     <option value='3'>March</option>
     <option value='4'>April</option>
@@ -198,7 +198,7 @@ function validateForm() {
                <label for="expyear">Exp Year</label>
                <!-- <input type="text" id="expyear" name="expyear" placeholder="2018" required="required"> -->
                <select type="text" placeholder="2018" required>
-               		<% for(int y=2014; y<=2025; y++){%>
+               		<% for(int y=2020; y<=2035; y++){%>
   					<option><%=y%></option>
 					<%}%>
                </select>

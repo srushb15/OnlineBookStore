@@ -2,6 +2,7 @@ package com.bookstore;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.bookstore.db.BookDB;
 import com.bookstore.db.LineItemDB;
 import com.bookstore.db.TransactionDB;
 import com.bookstore.models.Cart;
@@ -89,9 +91,13 @@ public class SubmitOrder extends HttpServlet {
 			item.setTransactionId(transactionId);
 		}
 		new LineItemDB().insertLineItems(lineItems);
-		cart.removeAllItems();
 		
 		request.setAttribute("confirmId", transactionId);
+		request.setAttribute("getTotalPrice", calculateTotalPrice(cart));
+		request.setAttribute("getUserName", userStr);
+		request.setAttribute("getPurchaseDate", new Date());
+		request.setAttribute("itemList", lineItems);
+		cart.removeAllItems();
 		
 		RequestDispatcher dispatcher =
                 getServletContext().getRequestDispatcher("/OrderConfirmation.jsp");

@@ -58,10 +58,10 @@
 	<input type="text" class="form-control" name="username" id="username" required placeholder="Username" />
 	
 	<label for="firstName" class="sr-only">First Name:</label>
-	<input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name" required />
+	<input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name" required  onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))'/>
 	
 	<label for="lastName" class="sr-only">Last Name:</label>
-	<input type="text" class="form-control" name="lastName" id="lastName" required placeholder="Last Name" />
+	<input type="text" class="form-control" name="lastName" id="lastName" required placeholder="Last Name"  onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))'/>
 	
 	<label for="passwd" class="sr-only">Password:</label>
 	<input type="password" class="form-control" name="passwd" id="passwd" required placeholder="Password" />
@@ -70,7 +70,7 @@
 	<input type="email" class="form-control" name="email" id="email"  required placeholder="Email" />
 
 	<label for="phoneNumber" class="sr-only">Phone Number:</label>
-	<input type="tel" class="form-control" name="phoneNumber" id="phoneNumber" maxlength="10" pattern="[1-9]{1}[0-9]{9}" required placeholder="Phone Number" /><br>
+	<input type="tel" class="form-control" name="phoneNumber" id="phoneNumber" maxlength="10" pattern="[1-9]{1}[0-9]{9}" required placeholder="Phone Number" onkeypress='return (event.charCode >= 48 && event.charCode <= 57)'/><br>
 
 	<input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign Up" />
 </form>
